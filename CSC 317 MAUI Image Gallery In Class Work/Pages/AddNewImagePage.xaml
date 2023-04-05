@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CSC_317_MAUI_Image_Gallery_In_Class_Work.Pages.AddNewImagePage"
+             Title="">
+
+    <Grid
+        RowDefinitions="*, 60">
+        <CollectionView Margin="20" Grid.Row="0"
+                            x:Name="layoutAdd" ItemsLayout="HorizontalGrid, 4"
+                            SelectionMode="Multiple" BackgroundColor="#111111"
+                        >
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout Margin="20" HeightRequest="200">
+                        <Image HeightRequest="160" MaximumHeightRequest="40" Source="{Binding ImageURL}" />
+                        <Label MaxLines="1" MaximumWidthRequest="150" Text="{Binding ImageName}"/>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <HorizontalStackLayout Grid.Row="1">
+            <Button MaximumWidthRequest="250" Text="Select Images from Device" Clicked="SelectImagesFromFile"/>
+            <Button MaximumWidthRequest="250" Text="Add Image from URL" Clicked="SelectImagesFromURI"/>
+            <Button MaximumWidthRequest="250" Text="Remove Checkmarked Images" Clicked="RemoveSelected"/>
+            <Button MaximumWidthRequest="250" Text="Finalize Selection" Clicked="FinalizeSource"/>
+            <Button MaximumWidthRequest="250" Text="Cancel" Clicked="Cancel"/>
+        </HorizontalStackLayout>
+    </Grid>
+</ContentPage>

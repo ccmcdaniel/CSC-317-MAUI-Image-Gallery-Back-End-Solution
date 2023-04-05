@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CSC_317_MAUI_Image_Gallery_In_Class_Work.Pages.RemoveImagesPage"
+             Title="">
+    <Grid
+            RowDefinitions="60, *, 100"
+            ColumnDefinitions="60, *, 60"
+            >
+
+        <Label Grid.Row="0" Grid.ColumnSpan="3" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                   Text="Which images would you like to remove?"
+                   FontSize="25"/>
+
+        <CollectionView Margin="20" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                            x:Name="layoutRemove" ItemsLayout="HorizontalGrid, 4"
+                            SelectionMode="Multiple" BackgroundColor="#111111"
+                        >
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout Margin="20" HeightRequest="200">
+                        <Image HeightRequest="160" MaximumHeightRequest="40" Source="{Binding ImageURL}" />
+                        <Label Text="{Binding ImageName}"/>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+       
+        <Button Text="Delete Selected" WidthRequest="200" HeightRequest="55" FontSize="20" Grid.Row="2" Grid.Column="1" Clicked="Finalize"/>
+
+
+    </Grid>
+</ContentPage>

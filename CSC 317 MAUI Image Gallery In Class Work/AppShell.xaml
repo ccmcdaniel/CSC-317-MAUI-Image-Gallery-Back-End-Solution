@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="CSC_317_MAUI_Image_Gallery_In_Class_Work.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:CSC_317_MAUI_Image_Gallery_In_Class_Work"
+    Shell.FlyoutBehavior="Disabled"
+   >
+
+    <ShellContent
+        Title=""
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+
+    <!--Defines the "File" menu shown at the top of the app-->
+    <Shell.MenuBarItems>
+        <MenuBarItem Text="File">
+            <MenuFlyoutItem Text="Exit Program" Clicked="ExitProgram" />
+        </MenuBarItem>
+
+        <MenuBarItem Text="Gallery">
+            <MenuFlyoutItem Text="Create New Gallery" Clicked="CreateNewGallery"/>
+            <MenuFlyoutItem Text="Save Gallery.." Clicked="SaveGallery"/>
+            <MenuFlyoutItem Text="Save Gallery As.." Clicked="SaveGalleryAs"/>
+            <MenuFlyoutItem Text="Open Gallery.." Clicked="OpenGallery"/>
+        </MenuBarItem>
+        
+        <MenuBarItem Text="Images">
+            <MenuFlyoutItem Text="Add New Image to Gallery" Clicked="AddNewImage"/>
+            <MenuFlyoutItem Text="Remove Image from Gallery" Clicked="RemoveImages"/>
+            <MenuFlyoutItem Text="Delete All Images from Gallery" Clicked="ClearGallery"/>
+        </MenuBarItem>
+    </Shell.MenuBarItems>
+
+</Shell>

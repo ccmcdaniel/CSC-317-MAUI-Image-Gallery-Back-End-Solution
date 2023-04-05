@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CSC_317_MAUI_Image_Gallery_In_Class_Work.MainPage"
+             >
+
+    <ScrollView>
+        
+        <!--Define a grid to arrange the gallery view.
+            This grid will have 3 rows and 1 column.
+            Row 1 will have the thumbnails
+            Row 2 will have the current displayed image
+            Row 3 will have the forward and back buttons.
+            Rows 1 and 3 will have a static size while Row 2
+                will auto adjust.
+        
+        -->
+        <Grid
+            RowDefinitions="40, 140, *"
+            ColumnDefinitions="55, *, 55"
+            Margin="20">
+
+            <HorizontalStackLayout 
+                                   Grid.Row="0" Grid.ColumnSpan="3"
+                                   Spacing="10" HorizontalOptions="Center"                
+                   >
+                <Label FontSize="20" Text="Current Gallery: " />
+                <Label FontSize="20" x:Name="lblGalleyPath" Text="" />
+            </HorizontalStackLayout>
+            
+            <Rectangle Grid.Row="1" Grid.ColumnSpan="3" BackgroundColor="#333333"/>
+
+            <CollectionView Margin="20" Grid.Row="1" Grid.ColumnSpan="3"
+                            x:Name="thumbnailHolder" ItemsLayout="HorizontalList"
+                            SelectionMode="Single"
+                            SelectionChanged="LoadNewImage"
+                            ChildRemoved="ResetImage">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout Margin="20">
+                            <Image HeightRequest="40" MaximumHeightRequest="40" Source="{Binding ImageURL}" />
+                            <Label MaxLines="1" MaximumWidthRequest="450" Text="{Binding ImageName}"/>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!--This is the image that displays the current selected image-->
+            <VerticalStackLayout Grid.Row="2" Grid.Column="1">
+                <Image x:Name="imgDisplay"  Margin="20" MaximumHeightRequest="400"/>
+                <Label x:Name="lblDisplay" FontSize="30" HorizontalTextAlignment="Center"/>
+            </VerticalStackLayout>
+            <Button Text="&lt;" FontSize="45" BorderColor="Transparent" HeightRequest="55" BackgroundColor="#222222" Grid.Row="2" Grid.Column="0" Clicked="PreviousImage"/>
+            <Button    Text=">" FontSize="45" BorderColor="Transparent" HeightRequest="55" BackgroundColor="#222222" Grid.Row="2" Grid.Column="2" Clicked="NextImage"/>
+            <!--Navigation Buttons
+                Note: "&lt;" is an escape character for "<" since it is used
+                      in XAML syntax.  We cannot use it directly, therefore.
+            -->
+        </Grid>
+    </ScrollView>
+
+</ContentPage>
